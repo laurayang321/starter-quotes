@@ -10,6 +10,37 @@ class Welcome extends Application
 		parent::__construct();
 	}
 
+        
+         /**
+	 * Homepage for our app
+	 */
+	public function random()
+	{
+		// this is the view we want shown
+		$this->data['pagebody'] = 'homepage';
+
+		// build the list of authors, to pass on to our view
+		$source = $this->quotes->all();
+		$authors = array ();
+             
+                        
+                $count = count($source);  
+                $index = rand(0, $count-1);
+                $record = $source[$index];           
+                        
+		
+                $authors[] = array (
+                    'who' => $record['who'],
+                    'mug' => $record['mug'],
+                    'href' => $record['where'],
+                    'what'=>$record['what']);
+		
+		$this->data['authors'] = $authors;
+
+		$this->render();
+	}
+        
+        
 	/**
 	 * Homepage for our app
 	 */
@@ -32,6 +63,12 @@ class Welcome extends Application
 		$this->data['authors'] = $authors;
 
 		$this->render();
+                $this->random();
 	}
+        
+       
+
 
 }
+
+
