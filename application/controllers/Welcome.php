@@ -10,7 +10,6 @@ class Welcome extends Application
 		parent::__construct();
 	}
         
-        
 	/**
 	 * Homepage for our app
 	 */
@@ -36,7 +35,6 @@ class Welcome extends Application
                
 	}
         
-        
          /**
 	 * Random for our app
          * call this function to display random quote on random page
@@ -49,13 +47,13 @@ class Welcome extends Application
 		// build the list of authors, to pass on to our view
 		$source = $this->quotes->all();
 		$authors = array ();
-             
-                        
+                
+                //get random record
                 $count = count($source);  
                 $index = rand(0, $count-1);
-                $record = $source[$index];           
-                        
-		
+                $record = $source[$index]; 
+                
+                //set the randomed record into authors
                 $authors[] = array (
                     'who' => $record['who'],
                     'mug' => $record['mug'],
@@ -66,12 +64,6 @@ class Welcome extends Application
 
 		$this->render();
 	}
-        
-        
-        
-       
-
-
 }
 
 
