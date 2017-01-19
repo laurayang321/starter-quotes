@@ -9,10 +9,37 @@ class Welcome extends Application
 	{
 		parent::__construct();
 	}
+        
+        
+	/**
+	 * Homepage for our app
+	 */
+	public function index()
+	{
+		// this is the view we want shown
+		$this->data['pagebody'] = 'homepage';
 
+		// build the list of authors, to pass on to our view
+		$source = $this->quotes->all();
+		$authors = array ();
+		foreach ($source as $record)
+		{
+			$authors[] = array (
+                            'who' => $record['who'],
+                            'mug' => $record['mug'],
+                            'href' => $record['where'],
+                            'what'=>$record['what']);
+		}
+		$this->data['authors'] = $authors;
+
+		$this->render();
+               
+	}
+        
         
          /**
-	 * Homepage for our app
+	 * Random for our app
+         * call this function to display random quote on random page
 	 */
 	public function random()
 	{
@@ -41,30 +68,6 @@ class Welcome extends Application
 	}
         
         
-	/**
-	 * Homepage for our app
-	 */
-	public function index()
-	{
-		// this is the view we want shown
-		$this->data['pagebody'] = 'homepage';
-
-		// build the list of authors, to pass on to our view
-		$source = $this->quotes->all();
-		$authors = array ();
-		foreach ($source as $record)
-		{
-			$authors[] = array (
-                            'who' => $record['who'],
-                            'mug' => $record['mug'],
-                            'href' => $record['where'],
-                            'what'=>$record['what']);
-		}
-		$this->data['authors'] = $authors;
-
-		$this->render();
-                $this->random();
-	}
         
        
 

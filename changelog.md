@@ -6,3 +6,4 @@
 <h3>2. added new avatar and new quote record</h3>
 <h3>3. enhance the Tooltip</h3>
 <h3>4. Randomly choose a quote to display in home page. Add random method</h3>
+<h3>5. Change to only display single random quote on random page, not on home page</h3>
